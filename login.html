@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login- PlayHard Sports</title>
+    <link rel="stylesheet" href="/Estilos/style.css">
+    <link rel="stylesheet" href="/Estilos/styleLogin.css">
+    <link rel="icon" href="Imagens/icone.png" type="icone">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <h1>PlayHard Sports</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página principal</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section>
+            <!-- Seção de Login -->
+            <div class="formularioLogin">
+                <h2>Login na Loja</h2>
+                <form id="formularioLogin" onsubmit="return simulacaoLogin()">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required>
+                    
+                    <label for="senhaLogin">Senha:</label>
+                    <input type="password" id="senhaLogin" name="senhaLogin" required>
+                    
+                    <button type="submit">Entrar</button>
+                    <a href="cadastro.html" style="color: black; margin: 9px;">Não tem conta? Crie uma</a>
+                </form>
+                <p id="resultadoLogin"></p>
+            </div>
+        </section>
+    </div>
+
+    <script src="Scripts/scriptLogin.js">
+  
+    </script>
+</body>
+</html>

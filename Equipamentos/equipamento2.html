@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PlayHard Sports- Saco de pancada Gorilla 180cm"</title>
+    <link rel="icon" href="/Imagens/icone.png" type="icone">
+    <link rel="stylesheet" href="/Estilos/styleProdutos.css">
+</head>
+
+<body>
+    <header>
+        <a href="/index.html">
+            <h1>PlayHard Sports</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Página Principal</a></li>
+                <li><a href="/PagEsportes.html">Esportes</a></li>
+                <li><a href="/PagEquipamentos.html">Equipamentos</a></li>
+                <li><a href="/PagBicicletas.html">Bicicletas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section>
+            <div class="produto">
+                <img src="imagensEquipamentos/sacoDePancada.jpg" style="width: 240px;"
+                    alt="Saco de pancada Gorilla 180cm">
+                <div class="info">
+                    <h2>Saco de pancada Gorilla 180cm</h2>
+                    <p>Preço: R$369,99</p>
+                    <div class="btn-container">
+                        <button class="btn add-to-cart-btn">Adicionar ao Carrinho</button>
+                        <button class="btn" id="comprar-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="info-div">
+            <p id="item-added-text"></p>
+            <p id="total-carrinho">Total: R$0.00</p>
+        </div>
+    </div>
+    <!-- Carrinho de compras -->
+    <div class="carrinho-container">
+        <section class="carrinho">
+            <h2>Carrinho de Compras</h2>
+            <ul id="lista-carrinho">
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        const addToCartButton = document.querySelector('.add-to-cart-btn');
+        const itemAddedText = document.getElementById('item-added-text');
+        const totalElement = document.getElementById('total-carrinho');
+        const listaCarrinho = document.getElementById('lista-carrinho');
+        let total = 0;
+
+        // Adiciona um evento de clique ao botão "Adicionar ao Carrinho"
+        addToCartButton.addEventListener('click', () => {
+            // Adicione o preço do produto ao total
+            total += 369.99;
+
+            // Atualiza o total exibido
+            totalElement.textContent = `Total: R$${total.toFixed(2)}`;
+
+            // Exibe a mensagem de que o item foi adicionado
+            itemAddedText.textContent = 'Item adicionado ao carrinho';
+
+            // Adiciona o item ao carrinho de compras
+            const newItem = document.createElement('li');
+            newItem.innerHTML = `
+            Saco de pancada Gorilla 180cm
+                <span>R$369,99</span>
+                <span>&nbsp;</span> <!-- Espaço entre os valores -->
+                <button class="remove-item-btn">Remover</button>
+            `;
+            listaCarrinho.appendChild(newItem);
+
+            // Adiciona um evento de clique ao botão "Remover"
+            const removeItemButton = newItem.querySelector('.remove-item-btn');
+            removeItemButton.addEventListener('click', () => {
+                // Remove o preço do produto do total
+                total -= 118.99;
+
+                // Atualiza o total exibido
+                totalElement.textContent = `Total: R$${total.toFixed(2)}`;
+
+                // Remove o item do carrinho
+                listaCarrinho.removeChild(newItem);
+
+                // Exibe a mensagem de que o item foi removido
+                itemAddedText.textContent = 'Item removido do carrinho';
+            });
+        });
+        const comprarButton = document.getElementById('comprar-button');
+        comprarButton.addEventListener('click', () => {
+            if (total > 0) {
+                // Redireciona para a página de compras apenas se o carrinho não estiver vazio
+                window.location.href = "/PagCompras.html";
+            } else {
+                // Se o carrinho estiver vazio, exibe uma mensagem de erro
+                itemAddedText.textContent = 'Adicione itens ao carrinho antes de continuar.';
+            }
+        });
+    </script>
+</body>
+
+</html>

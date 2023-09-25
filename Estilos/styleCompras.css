@@ -1,0 +1,93 @@
+.container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+
+.form-container {
+    margin-top: 20px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #eb8f04;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #d57c03;
+}
+
+.payment-fields {
+    display: none;
+}
+
+.credit-debit-fields,
+.boleto-fields {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    label,
+    input[type="text"],
+    input[type="email"],
+    select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: none;
+        text-align: left;
+    }
+
+    nav .login-cadastro {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    nav ul {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon.active+nav ul {
+        display: block;
+    }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro- PlayHard Sports</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+    <link rel="stylesheet" href="Estilos/styleCadastros.css">
+    <link rel="icon" href="Imagens/icone.png" type="icone">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <h1>PlayHard Sports</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página principal</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section>
+            <!-- Seção de Cadastro -->
+            <div class="formularioRegistro">
+                <h2>Cadastro na Loja</h2>
+                <form id="signup-form">
+                    <label for="name">Nome completo:</label>
+                    <input type="text" id="name" name="name" required>
+            
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+            
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" required>
+            
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+            
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+            
+                    <div id="password-error" class="error-message"></div>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="Scripts/scriptCadastro.js"></script>
+</body>
+</html>

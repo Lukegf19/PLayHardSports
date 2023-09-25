@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayHard Sports- Finalizar Compra</title>
+    <link rel="icon" href="Imagens/icone.png" type="icone">
+    <link rel="stylesheet" href="Estilos/styleCompras.css">
+    <link rel="stylesheet" href="/Estilos/style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html">
+            <h1>PlayHard Sports</h1>
+        </a>
+    </header>
+    <div class="container">
+        <h2 style="text-align: center;">Finalizar Compra </h2>
+
+        <div class="form-container">
+            <form id="checkout-form" action="processar-compra.php" method="post">
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" required>
+
+                <label for="estado">Selecione seu estado:</label>
+                <select id="estado" name="estado">
+                    <option value="">Selecione um estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                </select>
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+
+                <label for="numero">Número de telefone:</label>
+                <input type="text" id="numero" name="numero" required>
+
+                <label for="email">Endereço de Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="forma-pagamento">Forma de Pagamento:</label>
+                <select id="forma-pagamento" name="forma-pagamento" required onchange="showPaymentFields()">
+                    <option value="" selected disabled>Escolha uma opção</option>
+                    <option value="credito">Cartão de Crédito</option>
+                    <option value="boleto">Boleto Bancário</option>
+                </select>
+
+                <!-- Campos de pagamento para cartão de crédito -->
+                <div class="payment-fields credit-debit-fields">
+                    <label for="nome-cartao">Nome Completo no Cartão:</label>
+                    <input type="text" id="nome-cartao" name="nome-cartao" required>
+
+                    <label for="numero-cartao">Número do Cartão:</label>
+                    <input type="text" id="numero-cartao" name="numero-cartao" required>
+
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+
+                    <label for="validade">Data de Validade:</label>
+                    <input type="text" id="validade" name="validade" required>
+
+                    <label for="parcelas">Parcelas:</label>
+                    <select id="parcelas" name="parcelas">
+                        <option value="1">1x</option>
+                        <option value="2">2x</option>
+                        <option value="3">3x</option>
+                    </select>
+                </div>
+
+                <!-- Campo de pagamento para boleto -->
+                <div class="payment-fields boleto-fields">
+                    <p>Código de Barras: 1234 5678 9012 3456 7890 1234 5678 9012 3456 7890</p>
+                </div>
+
+                <button type="submit" class="btn">Finalizar Compra</button>
+            </form>
+        </div>
+    </div>
+
+    </form>
+    </div>
+    </div>
+
+    <script>
+        function showPaymentFields() {
+            const formaPagamento = document.getElementById('forma-pagamento').value;
+            const creditDebitFields = document.querySelector('.credit-debit-fields');
+            const boletoFields = document.querySelector('.boleto-fields');
+
+            // Oculta todos os campos de pagamento
+            creditDebitFields.style.display = 'none';
+            boletoFields.style.display = 'none';
+
+            // Mostra os campos de pagamento correspondentes à forma selecionada
+            if (formaPagamento === 'credito') {
+                creditDebitFields.style.display = 'block';
+            } else if (formaPagamento === 'boleto') {
+                boletoFields.style.display = 'block';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("checkout-form");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Valide os campos do formulário aqui
+                const cep = document.getElementById("cep").value;
+                const endereco = document.getElementById("endereco").value;
+                const cidade = document.getElementById("cidade").value;
+                const estado = document.getElementById("estado").value;
+                const numero = document.getElementById("numero").value;
+                const email = document.getElementById("email").value;
+                const formaPagamento = document.getElementById("forma-pagamento").value;
+
+                // Verifique os campos e exiba o alerta se estiver tudo correto
+                if (cep && endereco && cidade && estado && numero && email && formaPagamento) {
+                    // Redirecionar para a página de agradecimento após o envio do formulário
+                    window.location.href = "PagCompraFinalizada.html";
+                } else {
+                    alert("Por favor, preencha todos os campos obrigatórios.");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
